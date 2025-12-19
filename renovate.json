@@ -1,17 +1,13 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [ "config:best-practices" ],
+  "extends": [ 
+    "config:best-practices",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
   "minimumReleaseAge": "1 day",
   "prHourlyLimit": 0,
   "automergeType": "pr",
   "packageRules": [
-    {
-      "extends": [
-        "helpers:pinGitHubActionDigests"
-      ],
-      "extractVersion": "^(?<version>v?\\d+\\.\\d+\\.\\d+)$",
-      "versioning": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$"
-    },
     {
       "description": "Automerge safe updates (patch/minor) plus digest updates once checks pass",
       "matchUpdateTypes": ["patch", "minor", "digest"],
